@@ -1,80 +1,40 @@
-import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flick_video_player/flick_video_player.dart';
+// import 'package:video_player/video_player.dart';
+// // import 'package:webview_windows/webview_windows.dart';
 
-class MyVideoPlayer extends StatefulWidget {
-  const MyVideoPlayer({ Key? key }) : super(key: key);
+// class SamplePlayer extends StatefulWidget {
+//   const SamplePlayer({super.key});
 
-  @override
-  _MyVideoPlayerState createState() => _MyVideoPlayerState();
-}
+//   @override
+//   _SamplePlayerState createState() => _SamplePlayerState();
+// }
 
-class _MyVideoPlayerState extends State<MyVideoPlayer> {
+// class _SamplePlayerState extends State<SamplePlayer> {
+//    late FlickManager flickManager;
+//   @override
+//   void initState() {
+//     super.initState();
+//     flickManager = FlickManager(
+//       videoPlayerController:
+//           VideoPlayerController.network("assets/video.mp4" ),
+//     );
+//   }
 
+//   @override
+//   void dispose() {
+//     flickManager.dispose();
+//     super.dispose();
+//   }
 
-  VideoPlayerController? controller;
-
-  String dataSource = "https://shivanesboutique.com/pub/media/S_MAM_VIDEO_10042021.mp4";
-   String asset = "assets/video.mp4";
-
-  @override
-  void initState() {
-    super.initState();
-    controller = VideoPlayerController.asset(asset)..initialize().then((_) {
-      setState(() {
-      });
-    });
-
-
-   controller!.play();
-  }
-
-
-  @override
-  void dispose() {
-    controller!.dispose();
-    super.dispose();
-  }
-
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Video Player ",style: TextStyle(color: Colors.black),),
-        centerTitle: true,
-        backgroundColor: Color.fromARGB(255, 200, 252, 252),
-      ),
-      body: ListView(
-        children: [
-          controller!.value.isInitialized ?
-          AspectRatio(aspectRatio: controller!.value.aspectRatio , 
-          child: VideoPlayer(controller!),
-          )
-          :
-          Container(height: 200,  width: double.infinity, child: Center(child: CircularProgressIndicator(),),)
-        ],
-      ),
-    
-    floatingActionButton: FloatingActionButton(
-      backgroundColor:  Color.fromARGB(255, 200, 252, 252),
-      onPressed: () {
-        setState(() {
-          if(controller!.value.isPlaying){
-            controller!.pause();
-          }else{
-            controller!.play();
-          }
-        });
-      },
-      child: Icon( 
-        controller!.value.isPlaying ?
-        Icons.pause:
-        Icons.play_arrow,
-        color:Colors.black ,
-       ),
-    ),
-    
-    )
-    ;
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       height: 500,
+//       width: 500,
+//       child: FlickVideoPlayer(
+//         flickManager: flickManager
+//       ),
+//     );
+//   }
+// }
